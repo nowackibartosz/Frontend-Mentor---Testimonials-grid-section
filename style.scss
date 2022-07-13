@@ -1,0 +1,139 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+@mixin boxy {
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+}
+
+body {
+  font-family: sans-serif;
+  width: 80%;
+  background-color: #edf2f8;
+
+  margin: 50px auto;
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+
+  // [class^="box-"] {
+  //   background-color: skyblue;
+  //   display: grid;
+  //   place-items: center;
+  // }
+
+  .container {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+      "A A A A    B B E E"
+      "C C D D    D D E E";
+
+    .box-1 {
+      position: relative;
+      grid-area: A;
+      background-color: #733fc8;
+      color: white;
+
+      @include boxy;
+
+      .przecinek {
+        width: 100px;
+        height: 100px;
+        top: 0px;
+        right: 6vw;
+        position: absolute;
+
+        background-image: url("./images/bg-pattern-quotation.svg");
+        background-size: cover;
+      }
+    }
+
+    .box-2 {
+      grid-area: B;
+      background-color: #49556b;
+      color: white;
+      @include boxy;
+    }
+    .box-3 {
+      grid-area: C;
+      background-color: rgb(255, 255, 255);
+      @include boxy;
+    }
+    .box-4 {
+      grid-area: D;
+      background-color: #18202d;
+      color: white;
+      @include boxy;
+    }
+    .box-5 {
+      grid-area: E;
+      background-color: rgb(255, 255, 255);
+
+      @include boxy;
+    }
+
+    .text {
+      margin: 25px;
+      z-index: 1;
+
+      .title {
+        display: grid;
+        grid-template-areas:
+          "A B"
+          "A C ";
+
+        grid-template-columns: 60px auto;
+
+        .img {
+          height: 45px;
+          width: 45px;
+          border: 3px solid rgba(255, 255, 255, 0.5);
+
+          border-radius: 50%;
+          grid-area: A;
+        }
+
+        h1 {
+          font-size: 14px;
+        }
+        h2 {
+          font-size: 12px;
+          font-weight: 400;
+        }
+      }
+
+      .text1 {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .text2 {
+        margin-top: 20px;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    .container {
+      grid-template-areas:
+        "A"
+        "B"
+        "C"
+        "D"
+        "E";
+    }
+  }
+}
