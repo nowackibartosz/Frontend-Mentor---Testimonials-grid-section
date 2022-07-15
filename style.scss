@@ -1,19 +1,35 @@
+@font-face {
+  font-family: "BarlowSemiCondensed-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./assets/fonts/BarlowSemiCondensed-Regular.ttf");
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+
+  font-family: "BarlowSemiCondensed-Regular";
+  font-weight: 500;
 }
 
 @mixin boxy {
-  display: grid;
-  place-items: center;
   border-radius: 12px;
 }
 
+:root {
+  --violet: hsl(263, 55%, 52%);
+  --grey: hsl(217, 19%, 35%);
+  --white: hsl(0, 0%, 100%);
+  --dark: hsl(219, 29%, 14%);
+  --theme: hsl(0, 0%, 81%);
+}
 body {
   font-family: sans-serif;
   width: 80%;
-  background-color: #edf2f8;
+  background-color: var(--theme);
+  font-size: 13px;
 
   margin: 50px auto;
 
@@ -30,7 +46,6 @@ body {
   //   display: grid;
   //   place-items: center;
   // }
-
   .container {
     display: grid;
     gap: 20px;
@@ -41,50 +56,42 @@ body {
     .box-1 {
       position: relative;
       grid-area: A;
-      background-color: #733fc8;
+      background-color: var(--violet);
+      background-image: url("./images/bg-pattern-quotation.svg");
+      background-repeat: no-repeat;
+      background-size: 100px 100px;
+      background-position: 85% 0%;
       color: white;
 
       @include boxy;
-
-      .przecinek {
-        width: 100px;
-        height: 100px;
-        top: 0px;
-        right: 6vw;
-        position: absolute;
-
-        background-image: url("./images/bg-pattern-quotation.svg");
-        background-size: cover;
-      }
     }
 
     .box-2 {
       grid-area: B;
-      background-color: #49556b;
+      background-color: var(--grey);
       color: white;
       @include boxy;
     }
     .box-3 {
       grid-area: C;
-      background-color: rgb(255, 255, 255);
+      background-color: var(--white);
       @include boxy;
     }
     .box-4 {
       grid-area: D;
-      background-color: #18202d;
+      background-color: var(--dark);
       color: white;
       @include boxy;
     }
     .box-5 {
       grid-area: E;
-      background-color: rgb(255, 255, 255);
+      background-color: var(--white);
 
       @include boxy;
     }
 
     .text {
       margin: 25px;
-      z-index: 1;
 
       .title {
         display: grid;
@@ -92,7 +99,7 @@ body {
           "A B"
           "A C ";
 
-        grid-template-columns: 60px auto;
+        grid-template-columns: 60px 1fr;
 
         .img {
           height: 45px;
@@ -103,23 +110,24 @@ body {
           grid-area: A;
         }
 
-        h1 {
-          font-size: 14px;
+        p.name {
+          font-weight: 600;
         }
-        h2 {
-          font-size: 12px;
-          font-weight: 400;
+        p.status {
+          font-weight: 500;
+          opacity: 0.5;
         }
       }
 
       .text1 {
         margin-top: 20px;
-        font-weight: bold;
+        font-weight: 600;
       }
 
       .text2 {
         margin-top: 20px;
-        font-weight: 300;
+        font-weight: 500;
+        opacity: 0.7;
       }
     }
   }
